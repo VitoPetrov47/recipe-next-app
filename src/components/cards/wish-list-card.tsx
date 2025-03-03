@@ -17,11 +17,11 @@ export default function WishListCard({ meal }: ICard) {
         dispatch(removeMeal(meal.idMeal));
     };
 
-    const ingredients = [];
+    const ingredients = [] as string[];
     for (let i = 1; i <= 20; i++) {
         const ingredient = meal[`strIngredient${i}`];
         if (ingredient) {
-            ingredients.push(ingredient);
+            ingredients.push(ingredient as string);
         }
     }
 

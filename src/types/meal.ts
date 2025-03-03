@@ -17,7 +17,7 @@ export interface Meal {
     strIngredient8?: string;
     strIngredient9?: string;
     strIngredient10?: string;
-    [key: string]: any;
+    [key: string]: unknown;
 }
 
 export interface MealsResponse {

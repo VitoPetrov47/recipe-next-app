@@ -1,4 +1,3 @@
-// IngredientsAccordion.tsx
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@radix-ui/react-accordion";
 
 interface IngredientsAccordionProps {

@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { mealService } from "@/services/mealService";
 
-
 export const useAllList = () => {
     return useQuery({
         queryKey: ["meal-list"],

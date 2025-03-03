@@ -4,7 +4,7 @@ import { useRandomMealLists, useMealsByName } from "@/hooks/use-meals";
 import { Meal } from "@/types/meal";
 import CategoryFilterBar from "@/components/filterBar/category-filter-bar";
 import SearchBar from "@/components/filterBar/search-bar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Card from "@/components/cards/Card";
 import IsEmptyList from "@/components/is-empty-list";
 import { PaginationCustomList } from "@/components/pagination";
@@ -18,7 +18,6 @@ export default function MealList() {
 
     const { data: searchMeals } = useMealsByName(search);
     const { data: randomMealList, isLoading, error } = useRandomMealLists(72);
-
     if (isLoading) return <p>Загрузка...</p>;
     if (error) return <p>Ошибка загрузки данных</p>;
 
@@ -31,7 +30,6 @@ export default function MealList() {
 
     const totalPages = Math.ceil((filteredMeals?.length || 0) / ITEMS_PER_PAGE);
 
-    // Pagination logic
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
     const paginatedMeals = filteredMeals?.slice(startIndex, endIndex);

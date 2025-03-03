@@ -3,15 +3,12 @@
 import { useMealById } from "@/hooks/use-meals";
 import Breadcrumb from "@/components/navigation/breadcrumb";
 import { useParams } from 'next/navigation';
-
+import Image from "next/image";
 export default function Page() {
     const params = useParams();
-    const id = params.id as string; // Type assertion to string
+    const id = params.id as string;
 
     const { data: meal, isLoading, error } = useMealById(id);
-
-    // Log the meal data for debugging
-    console.log('meal: ', meal);
 
     if (isLoading) return <p>Загрузка...</p>;
     if (error) return <p>Ошибка загрузки данных</p>;
@@ -25,7 +22,13 @@ export default function Page() {
         <>
             <Breadcrumb navlinks={navlinks} />
             <h1>{meal.strMeal}</h1>
-            <img src={meal.strMealThumb} alt={meal.strMeal} />
+            <Image
+                src={meal.strMealThumb}
+                width={200}
+                height={200}
+                objectFit="contain"
+                alt={meal.strMeal}
+            />
         </>
     );
 }

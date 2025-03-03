@@ -1,4 +1,5 @@
 import axios from "axios";
+import {Category} from "@/types/category";
 
 const API_URL = "https://www.themealdb.com/api/json/v1/1";
 
@@ -39,7 +40,7 @@ export const mealService = {
     /*that case is not optimization so better use getRandomMeals*/
     getAllMeals: async () => {
         const { data: categoriesData } = await axios.get(`${API_URL}/categories.php`);
-        const categories = categoriesData.categories.map((cat: any) => cat.strCategory);
+        const categories = categoriesData.categories.map((cat: Category) => cat.strCategory);
 
         const meals = await Promise.all(
             categories.map(async (category: string) => {
